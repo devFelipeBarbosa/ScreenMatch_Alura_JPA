@@ -1,0 +1,28 @@
+package br.com.alura.screenmatch.model;
+
+import com.fasterxml.jackson.annotation.JsonAlias;
+
+import java.util.Optional;
+import java.util.OptionalDouble;
+
+public class Serie {
+
+    private String titulo;
+    private Integer totalTemporadas;
+    private Double avaliacao;
+    private Categoria genero;
+    private String atores;
+    private String poster;
+    private String sinopse;
+
+    public Serie(DadosSerie dadosSerie){
+        this.titulo = dadosSerie.titulo();
+        this.totalTemporadas = dadosSerie.totalTemporadas();
+        this.avaliacao = OptionalDouble.of(Double.valueOf(dadosSerie.avaliacao())).orElse(0); // If melhorado para caso não ache valores retornar Zero
+        this.genero = Categoria.fromString(dadosSerie.genero().split(",")[0].trim()); // trim ele corta a palavra removendo espaçamentos e o split pega separa em Lista, os dados por vírgula, sendo retornado apenas o primeiro item da lista [0]
+        this.atores = dadosSerie.atores();
+        this.poster = dadosSerie.poster();
+        this.sinopse = dadosSerie.sinopse();
+
+    }
+}

@@ -1,6 +1,6 @@
 package br.com.alura.screenmatch.model;
 
-import br.com.alura.screenmatch.service.ConsultaChatGPT;
+import br.com.alura.screenmatch.service.ConsultaGemini;
 import com.fasterxml.jackson.annotation.JsonAlias;
 
 import java.util.Optional;
@@ -23,7 +23,7 @@ public class Serie {
         this.genero = Categoria.fromString(dadosSerie.genero().split(",")[0].trim()); // trim ele corta a palavra removendo espaçamentos e o split pega separa em Lista, os dados por vírgula, sendo retornado apenas o primeiro item da lista [0]
         this.atores = dadosSerie.atores();
         this.poster = dadosSerie.poster();
-        this.sinopse = ConsultaChatGPT.obterTraducao(dadosSerie.sinopse()).orElse("Erro!!");
+        this.sinopse = ConsultaGemini.obterTraducao(dadosSerie.sinopse()).trim();
 
     }
 

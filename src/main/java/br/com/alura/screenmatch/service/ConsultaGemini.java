@@ -20,7 +20,7 @@ public class ConsultaGemini {
     private static final Client client;
 
     // A chave é definida aqui. Use a variável de ambiente GOOGLE_API_KEY se preferir.
-    private static final String API_KEY = "AIzaSyBZtADQuewBbZBj_I1dxcB2W9TYfEb8DCQ";
+    private static final String API_KEY = System.getenv("GEMINI_APIKEY");
 
     // Bloco estático para inicializar o Client apenas uma vez
     static {
